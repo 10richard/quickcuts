@@ -1,4 +1,33 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<nav class="flex items-center justify-between bg-slate-900 p-2.5 text-white text-lg">
+    <div class="flex items-center">
+        <%= link_to root_path, class: "group flex items-center" do %>
+            <%= image_tag 'logo.svg', class: "w-12" %>
+            <h1 class="group-hover:opacity-80 text-2xl">Quick<span class="text-cyan-300">Cuts</span></h1>
+        <% end %>
+    </div>
+    <div>
+        <%= link_to 'Home', root_path, class: "hover:opacity-80" %>
+        <%= link_to 'About', root_path, class: "hover:opacity-80 mx-10"%>
+        <%= link_to 'Contact', root_path, class: "hover:opacity-80" %>
+    </div>
+    <div class="text-base top">
+        <%# add proper links after genning User model via devise %>
+        <%= link_to 'Log in', 'users/login' %>
+        <%= link_to 'Sign up', 'users/register', class: "bg-cyan-300 p-1.5 rounded-md text-black ml-5 hover:bg-white hover:text-cyan-500 duration-300" %>
+    </div>
+</nav>
+
+<div class="relative">
+    <%# Hero banner %>
+    <%= image_tag 'hero.jpeg', class: "w-full h-[90vh] brightness-[40%] object-cover object-top" %>
+    <div class="text absolute top-1/4 left-1/4 text-white">
+        <h1 class="text-5xl font-semibold mb-2">Ditch the shops</h1>
+        <p class="text-base mb-5"><span class="text-cyan-300 font-medium">Elevate</span> your <span class="text-cyan-300 font-medium">haircutting experience</span> with our reservation system<br>
+        that brings the expertise of <span class="text-cyan-300 font-medium">skilled barbers</span> right to your <span class="text-cyan-300 font-medium">doorstep</span></p>
+        <p class="text-base">Say goodbye to <span class="text-cyan-300 font-medium">long waits</span> and hello to <span class="text-cyan-300 font-medium">personalized service</span></p>
+    </div>
 </div>
+
+<footer>
+    <%# Include github ("Checkout the source code!")%>
+</footer>
