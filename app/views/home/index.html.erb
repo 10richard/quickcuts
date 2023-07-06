@@ -12,22 +12,51 @@
     </div>
     <div class="text-base top">
         <%# add proper links after genning User model via devise %>
-        <%= link_to 'Log in', 'users/login' %>
+        <%= link_to 'Log in', 'users/login', class: "hover:underline" %>
         <%= link_to 'Sign up', 'users/register', class: "bg-cyan-300 p-1.5 rounded-md text-black ml-5 hover:bg-white hover:text-cyan-500 duration-300" %>
     </div>
 </nav>
 
-<div class="relative">
+<div class="relative mb-32">
     <%# Hero banner %>
-    <%= image_tag 'hero.jpeg', class: "w-full h-[90vh] brightness-[40%] object-cover object-top" %>
+    <%= image_tag 'hero.jpeg', class: "w-full h-[92vh] brightness-[40%] object-cover object-top" %>
     <div class="text absolute top-1/4 left-1/4 text-white">
         <h1 class="text-5xl font-semibold mb-2">Ditch the shops</h1>
-        <p class="text-base mb-5"><span class="text-cyan-300 font-medium">Elevate</span> your <span class="text-cyan-300 font-medium">haircutting experience</span> with our reservation system<br>
+        <p class="mb-5"><span class="text-cyan-300 font-medium">Elevate</span> your <span class="text-cyan-300 font-medium">haircutting experience</span> with our reservation system<br>
         that brings the expertise of <span class="text-cyan-300 font-medium">skilled barbers</span> right to your <span class="text-cyan-300 font-medium">doorstep</span></p>
-        <p class="text-base">Say goodbye to <span class="text-cyan-300 font-medium">long waits</span> and hello to <span class="text-cyan-300 font-medium">personalized service</span></p>
+        <p class="mb-12">Say goodbye to <span class="text-cyan-300 font-medium">long waits</span> and hello to <span class="text-cyan-300 font-medium">personalized service</span></p>
+
+        <%# Add path to sign up or user index (if signed in) later%>
+        <%= link_to 'Reserve Now', 'users/register', class: "text-lg text-white bg-cyan-500 p-1.5 rounded-md border border-white opacity-70 hover:opacity-100 duration-200" %>
+    </div>
+</div>
+
+<div class="font-semibold font-roboto h-[80vh]">
+    <%# Steps for reserving a barber %>
+    <h1 class="text-center text-4xl underline underline-offset-8 decoration-cyan-300 mb-20">Book a haircut now</h1>
+
+    <div class="flex justify-center">
+        <%= image_tag 'reserve-steps.svg', class: "w-[30vw] mr-36"  %>
+        <div>
+            <div class="shadow-md border-2 border-cyan-600 p-3 rounded-md">
+                <h3 class="text-2xl">Find your Barber</h3>
+                <p class="text-sm opacity-50">Explore a wide selection of talented barbers<br>who are passionate about
+                                    their craft and are <br>dedicated to deliver exceptional service.</p>
+            </div>
+            <div class="my-10 shadow-md border-2 border-cyan-600 p-3 rounded-md">
+                <h3 class="text-2xl">Choose a Service</h3>
+                <p class="text-sm opacity-50">From classic cuts to beard trims, fades to hot<br>
+                                    towel shaves, our diverse range of services<br>ensures there's something for everyone.</p>
+            </div>
+            <div class="shadow-md border-2 border-cyan-600 p-3 rounded-md">
+                <h3 class="text-2xl">Book and Enjoy</h3>
+                <p class="text-sm opacity-50">After booking your preferred barber and service,<br>sit back, and relax as they bring their expertise<br>directly to your doorstep.</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <footer>
-    <%# Include github ("Checkout the source code!")%>
+    <%# Add github repo here%>
+    <%= link_to %>
 </footer>
