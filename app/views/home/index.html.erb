@@ -12,8 +12,8 @@
     </div>
     <div class="text-base top">
         <%# add proper links after genning User model via devise %>
-        <%= link_to 'Log in', 'users/login', class: "hover:underline" %>
-        <%= link_to 'Sign up', 'users/register', class: "bg-cyan-300 p-1.5 rounded-md text-black ml-5 hover:bg-white hover:text-cyan-500 duration-300" %>
+        <%= link_to 'Log in', 'users/sign_in', class: "hover:underline" %>
+        <%= link_to 'Sign up', 'users/sign_up', class: "bg-cyan-300 p-1.5 rounded-md text-black ml-5 hover:bg-white hover:text-cyan-500 duration-300" %>
     </div>
 </nav>
 
@@ -27,7 +27,7 @@
         <p class="mb-12">Say goodbye to <span class="text-cyan-300 font-medium">long waits</span> and hello to <span class="text-cyan-300 font-medium">personalized service</span></p>
 
         <%# Add path to sign up or user index (if signed in) later%>
-        <%= link_to 'Reserve Now', 'users/register', class: "text-lg text-white bg-cyan-500 p-1.5 rounded-md border border-white opacity-70 hover:opacity-100 duration-200" %>
+        <%= link_to 'Reserve Now', 'users/sign_up', class: "text-lg text-white bg-cyan-500 p-1.5 rounded-md border border-white opacity-70 hover:opacity-100 duration-200" %>
     </div>
 </div>
 
