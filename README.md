@@ -5,3 +5,6 @@ Website where users can get haircuts by meeting up with local barbers (instead o
 
 Tech Used:
 Ruby on Rails, TailwindCSS and Postgres
+
+
+Registration + Sessions were created with the devise gem
