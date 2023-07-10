@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get 'home/index'
+  get 'pages/home'
+  get '/user_dashboard'
 
-  root 'home#index'
+  root 'pages#home'
 end
