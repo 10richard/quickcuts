@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
 
   get 'pages/home'
-  get '/user_dashboard'
+  get 'pages/user_dashboard'
 
   root 'pages#home'
 end
