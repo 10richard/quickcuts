@@ -1,0 +1,25 @@
+<nav class="flex items-center justify-between bg-slate-900 p-2.5 text-white text-lg">
+    <%= link_to root_path, class: "group flex items-center" do %>
+        <%= image_tag 'logo.svg', class: "w-12" %>
+        <h1 class="group-hover:opacity-80 text-2xl">Quick<span class="text-cyan-300">Cuts</span></h1>
+    <% end %>
+    <%= image_tag "menu.svg", class: "w-10 mr-5" %>
+    <%# Menu opts: Edit Acc details, Sign Out %>
+    <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete } %>
+</nav>
+
+<div class="ml-8 mt-10">
+    <h1 class="text-3xl">Welcome to QuickCuts, <%= current_user.first_name %></h1>
+    <%= link_to 'Book a Service', 'listings#index' %>
+    <div>
+        <div>
+            <h3>Upcoming Appointments</h3>
+            <%=%>
+        </div>
+        <div>
+            <h3>Past Appointments</h3>
+            <%=%>
+            <%# Allow user to leave review on appointment%>
+        </div>
+    </div>
+</div>
