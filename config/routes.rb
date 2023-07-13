@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "pages/contact"
   get "pages/about"
 
+  resources :listings
+
   get "dashboard/main"
   authenticated(:user) do
     root to: "dashboard#main", as: :authenticated_root
