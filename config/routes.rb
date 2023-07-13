@@ -3,8 +3,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get 'pages/home'
-  get 'pages/user_dashboard'
+  get "pages/home"
+  get "pages/contact"
+  get "pages/about"
 
-  root 'pages#home'
+  get "dashboard/main"
+  authenticated(:user) do
+    root to: "dashboard#main", as: :authenticated_root
+  end
+  root "pages#home"
 end
