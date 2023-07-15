@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   resources :listings
 
-  get "dashboard/main"
+  get "user/dashboard"
+  get "user/listing"
+
   authenticated(:user) do
-    root to: "dashboard#main", as: :authenticated_root
+    root to: "user#dashboard", as: :authenticated_root
   end
   root "pages#home"
 end
