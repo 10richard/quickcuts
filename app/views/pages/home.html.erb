@@ -1,26 +1,41 @@
-<nav class="flex items-center justify-between bg-slate-900 p-2.5 text-white text-lg">
+<%# Navbar %>
+<nav class="bg-slate-900 w-full z-10 text-white">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <%= link_to root_path, class: "group flex items-center" do %>
         <%= image_tag 'logo.svg', class: "w-12" %>
         <h1 class="group-hover:opacity-80 text-2xl">Quick<span class="text-cyan-300">Cuts</span></h1>
     <% end %>
-    <div>
-        <%= link_to 'Home', root_path, class: "hover:opacity-80" %>
-        <%= link_to 'About', root_path, class: "hover:opacity-80 mx-10"%>
-        <%= link_to 'Contact', root_path, class: "hover:opacity-80" %>
-    </div>
-    <div class="text-base top">
-        <%# add proper links after genning User model via devise %>
-        <%= link_to 'Log in', 'users/sign_in', class: "hover:underline" %>
-        <%= link_to 'Sign up', 'users/sign_up', class: "bg-cyan-300 p-1.5 rounded-md text-black ml-5 hover:bg-white hover:text-cyan-500 duration-300" %>
-    </div>
+  <div class="flex md:order-2">
+      <%= link_to 'Log In', 'users/sign_in', class: "bg-blue-700 p-1.5 rounded-lg text-white px-4 py-2 text-center mr-3 md:mr-0 hover:bg-cyan-500 duration-300" %>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+  </div>
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 -ml-14" id="navbar-sticky">
+    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 text-lg">
+        <li>
+            <%= link_to 'Home', root_path, class: "hover:opacity-80" %>
+        </li>
+        <li>
+            <%= link_to 'About', root_path, class: "hover:opacity-80 mx-10" %>
+        </li>
+        <li>
+            <%= link_to 'Contact', root_path, class: "hover:opacity-80" %>
+        </li>
+    </ul>
+  </div>
+  </div>
 </nav>
 
 <div class="relative mb-28">
     <%# Hero banner %>
     <%= image_tag 'hero.jpeg', class: "w-full h-[92vh] brightness-[40%] object-cover object-top" %>
-    <div class="text absolute top-1/4 left-1/4 text-white">
-        <h1 class="text-5xl font-semibold mb-2">Ditch the shops</h1>
-        <p class="mb-5"><span class="text-cyan-300 font-medium">Elevate</span> your <span class="text-cyan-300 font-medium">haircutting experience</span> with our reservation system<br>
+    <div class="max-[509px]:px-3 text absolute top-1/4 left-1/4 max-[855px]:left-[5%] text-white">
+        <h1 class="text-5xl font-semibold mb-2 max-[450px]:text-4xl">Ditch the shops</h1>
+        <p class="mb-5"><span class="text-cyan-300">Elevate</span> your <span class="text-cyan-300 font-medium">haircutting experience</span> with our reservation system<br class="max-[509px]:hidden">
         that brings the expertise of <span class="text-cyan-300 font-medium">skilled barbers</span> right to your <span class="text-cyan-300 font-medium">doorstep</span></p>
         <p class="mb-12">Say goodbye to <span class="text-cyan-300 font-medium">long waits</span> and hello to <span class="text-cyan-300 font-medium">personalized service</span></p>
 
@@ -29,13 +44,13 @@
     </div>
 </div>
 
-<div class="font-semibold font-roboto h-[85vh]">
+<div class="font-semibold font-roboto h-[85vh] max-[375px]:h-[100vh]">
     <%# Steps for reserving a barber %>
     <h1 class="text-center text-4xl underline underline-offset-8 decoration-cyan-300 mb-20">Book a haircut now</h1>
 
     <div class="flex justify-center">
-        <%= image_tag 'reserve-steps.svg', class: "w-[30vw] mr-20"  %>
-        <div>
+        <%= image_tag 'reserve-steps.svg', class: "w-[30vw] mr-20 max-[1100px]:hidden"  %>
+        <div class="p-3">
             <div class="shadow-md border-2 border-cyan-600 p-3 rounded-md">
                 <h3 class="text-cyan-500 text-2xl mb-2">Find your Barber</h3>
                 <p class="text-sm opacity-50">Explore a wide selection of talented barbers<br>who are passionate about
@@ -54,18 +69,18 @@
     </div>
 </div>
 
-<div class="bg-gray-100 h-[80vh] relative flex flex-col items-center">
+<div class="bg-gray-100 h-[100vh] max-[450px]:h-[100vh] max-[400px]:h-[120vh] relative flex flex-col items-center">
     <%# Testimonials (make gradient overlay w/ wavy svg image) %>
-    <h1 class="text-black font-semibold text-4xl mt-20 mb-10">Testimonials</h1>
-    <div class="flex">
-        <div class="shadow-md p-5 mr-12 bg-white rounded-lg w-96">
-            <div class="flex items-end justify-start mb-4">
+    <h1 class="text-black font-semibold text-4xl mt-20 mb-10">Client's Testimonials</h1>
+    <div class="flex max-[940px]:flex-col max-[940px]:items-center px-36 max-[600px]:px-3">
+        <div class="shadow-md p-5 min-[940px]:mr-12 max-[940px]:mb-12 bg-white rounded-lg">
+            <div class="flex items-end mb-4">
                 <%= image_tag 'testimony-pfp1.jpeg', class: "w-28 brightness-150 rounded-full border-2 border-black" %>
                 <h2 class="text-xl ml-2 font-semibold mb-2">Heisenberg</h2>
             </div>
             <p class="text-sm">"As a busy cook, finding time for a barber was a challenge. But booking through this platform changed everything. I chose my barber and service, and they arrived at my doorstep in no time."</p>
         </div>
-        <div class="shadow-md p-5 justify-start bg-white rounded-lg w-96 flex-shrink">
+        <div class="shadow-md p-5 bg-white rounded-lg">
             <div class="flex items-end mb-4">
                 <%= image_tag 'testimony-pfp2.jpeg', class: "w-28 rounded-full border-2 border-black" %>
                 <h2 class="text-xl ml-2 font-semibold mb-2">Jimmy McGill</h2>
@@ -77,7 +92,7 @@
 
 <footer class="bg-slate-900 p-3">
     <%# Add github repo here %>
-    <%= link_to root_path, class: "flex justify-center items-center" do %>
+    <%= link_to 'https://github.com/10richard/quickcuts', class: "flex justify-center items-center" do %>
         <h1 class="text-lg text-white">Check out the source code here</h1>
         <%= image_tag 'github.svg', class: "ml-5 w-9" %>
     <% end %>
