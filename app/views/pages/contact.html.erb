@@ -6,7 +6,7 @@
         <h1 class="group-hover:opacity-80 text-2xl">Quick<span class="text-cyan-300">Cuts</span></h1>
     <% end %>
     <div class="flex md:order-2">
-        <%= link_to 'Log In', 'users/sign_in', class: "bg-blue-700 p-1.5 rounded-lg text-white px-4 py-2 text-center mr-3 md:mr-0 hover:bg-cyan-500 duration-300" %>
+        <%= link_to 'Log In', new_user_session_path, class: "bg-blue-700 p-1.5 rounded-lg text-white px-4 py-2 text-center mr-3 md:mr-0 hover:bg-cyan-500 duration-300" %>
         <button id="toggle-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -32,6 +32,8 @@
 <h1 class="text-4xl">Contact</h1>
 
 <p>Have any questions?</p>
+
+
 
 <%= render "footer" %>
 
