@@ -29,18 +29,18 @@
   </div>
 </nav>
 
-<div class="flex flex-col items-center">
-    <%= image_tag 'hero-img-equipment.jpeg', class: "w-full h-[100vh] brightness-[40%] object-cover object-top" %>
-
-    <h1 class="text-4xl">About</h1>
-
-    <p>Discover the epitome of style and sophistication at QuickCuts, 
-    where we strive to make every visit a delightful and satisfying one. 
-    From classic cuts to trendy styles, our range of offerings is designed 
-    to cater to all your grooming needs. We believe that everyone deserves a 
-    personalized and enjoyable grooming experience, which is why we offer a 
-    seamless booking process, ensuring convenience every step of the way.
-    Your grooming journey starts here!</p>
+<div class="relative">
+    <%= image_tag 'hero-img-equipment.jpeg', class: "w-full h-[91vh] brightness-[40%] object-cover object-top" %>
+    <div class="absolute top-[15%] left-[15%] max-[855px]:left-[8%] text-white">
+        <h1 class="text-5xl underline underline-offset-4 mb-8 font-semibold">About</h1>
+        <p class="w-[80%]">Discover the epitome of style and sophistication at QuickCuts, 
+        where we strive to make every visit a delightful and satisfying one. 
+        From classic cuts to trendy styles, our range of offerings is designed 
+        to cater to all your grooming needs. We believe that everyone deserves a 
+        personalized and enjoyable grooming experience, which is why we offer a 
+        seamless booking process, ensuring convenience every step of the way.
+        Your grooming journey starts here!</p>
+    </div>
 </div>
 
 <%= render "footer" %>
