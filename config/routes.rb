@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+
   get "pages/home"
   get "pages/contact"
   get "pages/about"
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   resources :listings
 
   get "user/dashboard"
-  get "user/listing"
+  get "user/listings"
 
   authenticated(:user) do
     root to: "user#dashboard", as: :authenticated_root
