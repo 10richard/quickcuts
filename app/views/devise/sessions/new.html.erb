@@ -1,9 +1,9 @@
 <%= render "devise/shared/header" %>
 
-<div class="relative">
-  <%= image_tag 'bg-barber.jpeg', class: "w-full h-[92vh] brightness-50 object-cover object-top"%>
-  <div class="absolute top-[20%] left-[20%] flex items-center">
-    <div class="p-5 w-80 rounded-md mr-48 border-[1px] border-white backdrop-blur-md">
+<div class="relative ">
+  <%= image_tag 'bg-barber.jpeg', class: "w-full h-[110vh] brightness-50 object-cover object-top"%>
+  <div class="absolute lg:top-[20%] sm:left-[20%] top-[10%] left-[11%] lg:flex items-center">
+    <div class="p-5 rounded-md md:mr-48 mb-16 border-[1px] border-white backdrop-blur-md">
       <h2 class="text-white text-2xl mb-4">Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mb-5"}) do |f| %>
         <div class="mb-2">

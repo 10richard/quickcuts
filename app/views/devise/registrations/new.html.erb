@@ -1,14 +1,14 @@
 <%= render "devise/shared/header" %>
 
 <div class="relative">
-  <%= image_tag 'bg-barber.jpeg', class: "w-full h-[92vh] brightness-50 object-cover object-top"%>
-  <div class="absolute top-[20%] left-[20%] flex items-center">
-    <div class="p-5 w-fit rounded-md mr-48 border-[1px] border-white backdrop-blur-md">
+  <%= image_tag 'bg-barber.jpeg', class: "w-full md:h-[92vh] h-[98vh] brightness-50 object-cover object-top"%>
+  <div class="absolute sm:top-[20%] md:left-[20%] top-[10%] left-[15%] flex items-center">
+    <div class="p-5 w-fit rounded-md lg:mr-48 border-[1px] border-white backdrop-blur-md">
         <h2 class="text-2xl text-white mb-4">Sign up</h2>
         <%= render "devise/shared/error_messages", resource: resource %>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "mb-5"}) do |f| %>
-          <div class="flex mb-2">
-            <div class="mr-8">
+          <div class="sm:flex md:mb-2">
+            <div class="sm:mr-8">
               <%= f.label :first_name, class: "opacity-80 text-sm text-white" %><br />
               <%= f.text_field :first_name, class: "h-8" %>
             </div>
@@ -18,8 +18,8 @@
             </div>
           </div>
 
-          <div class="flex mb-2">
-            <div class="mr-8">
+          <div class="sm:flex sm:mb-2">
+            <div class="sm:mr-8">
               <%= f.label :username, class: "opacity-80 text-sm text-white" %><br />
               <%= f.text_field :username, class: "h-8" %>
             </div>
@@ -29,8 +29,8 @@
             </div>
           </div>
 
-          <div class="flex mb-4">
-            <div class="mr-8">
+          <div class="sm:flex mb-4">
+            <div class="sm:mr-8">
               <%= f.label :password, class: "opacity-80 text-sm text-white" %><br />
               <%= f.password_field :password, autocomplete: "new-password", class: "h-8" %>
             </div>
@@ -41,7 +41,7 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Sign up", class: "ml-96 text-white border-2 border-cyan-300 rounded-md p-1 text-sm  hover:border-white hover:text-cyan-300 duration-300" %>
+            <%= f.submit "Sign up", class: "sm:ml-96 text-white border-2 border-cyan-300 rounded-md p-1 text-sm hover:border-white hover:text-cyan-300 duration-300" %>
           </div>
         <% end %>
         <div>
