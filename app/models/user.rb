@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true
+
+  has_many :listings, foreign_key: 'barber_id', dependent: :destroy
 end
