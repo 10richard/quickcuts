@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
     end
 
     def create
-        @listing = Listing.new(listing_params)
+        @listing = current_user.build_listing(listing_params)
 
         if @listing.save
             redirect_to @listing and return
@@ -43,6 +43,6 @@ class ListingsController < ApplicationController
 
     private
     def listing_params
-        params.require(:listing).permit("add attributes l8r")
+        params.require(:listing).permit(:title, :services)
     end
 end
