@@ -2,7 +2,8 @@ class Listing < ApplicationRecord
 
     belongs_to :barber, class_name: 'User'
 
-    validates :user_is_barber?
+    validate :user_is_barber?
+    validates :title, :barber_id, :services, presence: true
 
     def user_is_barber?
         #check if user is a barber
