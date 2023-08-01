@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :listings
 
   get "user/dashboard"
-  get "user/listings"
 
   authenticated(:user) do
     root to: "user#dashboard", as: :authenticated_root
