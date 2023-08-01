@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+    before_action :authenticate_user!
 
     def index
         @listings = Listing.all
@@ -6,12 +7,16 @@ class ListingsController < ApplicationController
 
     def new
         @listing = Listing.new
+        5.times do 
+            @listing.services.build
+        end
     end
 
     def create
         @listing = current_user.build_listing(listing_params)
 
         if @listing.save
+            flash[:success] = 'Listing successfully created'
             redirect_to @listing and return
         end
         render :new, status: :unprocessable_entity
@@ -43,6 +48,6 @@ class ListingsController < ApplicationController
 
     private
     def listing_params
-        params.require(:listing).permit(:title, services: [])
+        params.require(:listing).permit(:title, services_attributes: [:id, :name, :price])
     end
 end
