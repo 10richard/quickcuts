@@ -7,9 +7,7 @@ class ListingsController < ApplicationController
 
     def new
         @listing = Listing.new
-        5.times do 
-            @listing.services.build
-        end
+        @listing.services.build
     end
 
     def create
