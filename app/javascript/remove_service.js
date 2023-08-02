@@ -1,5 +1,15 @@
-const btn = document.querySelector('#remove-service');
+const addServiceBtn = document.querySelector('#add-service');
+const removeServiceBtns = document.querySelectorAll('#remove-service');
 
-btn.addEventListener('click', () =>
-{ console.log('YAY!')
-})
+addServiceBtn.addEventListener('click', () => {
+    addListenersToRemoveBtns()
+});
+
+function addListenersToRemoveBtns() {
+    const removeServiceBtns = document.querySelectorAll('#remove-service');
+    removeServiceBtns.forEach((btn) => btn.addEventListener('click', () => {
+        if (removeServiceBtns.length > 1) {
+            btn.parentElement.remove();
+        }
+    }));
+};
