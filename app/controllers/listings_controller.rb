@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        @listing = Listing.find(params[:id])
+        @listing = Listing.find(current_user.listing.id)
     end
 
     def update
