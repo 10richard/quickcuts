@@ -1,0 +1,35 @@
+<%= form_with model: @listing, class: 'flex flex-col items-center' do |f| %>
+    <div class="mb-20">
+        <%# Allow barber to add images %>
+        <%= f.label :photos, 'Upload photos' %><br />
+        <%= %>
+    </div>
+    
+    <div class="mb-20">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, placeholder: 'ie. Cuts with Chris' %>
+    </div>
+
+    <div class="mb-20">
+        <h2>Services:</h2>
+        <div id="services">
+            <%= f.fields_for :services do |services_form| %>
+                <div class="mb-4">
+                    <%= services_form.label :name %>
+                    <%= services_form.text_field :name %>
+                    <%= services_form.label :price %>
+                    <%= services_form.text_field :price %>
+                    <button id="remove-service" type="button" class="bg-red-600 ml-2 w-6 text-center 
+                    text-white rounded-full hover:opacity-70">x</button>
+                </div>
+            <% end %>
+        </div>
+        <button type="button" id="add-service" class="bg-gray-600 text-white py-1 px-2 rounded-lg opacity-40 hover:opacity-100">
+        Add a service <span class="text-cyan-300 text-xl">+</span></button>
+    </div>
+
+    <%= f.submit 'Create', class: 'border border-2 border-black rounded-md w-[90vw]' %>
+<% end %>
+
+<%= javascript_import_module_tag("add_service") %>
+<%= javascript_import_module_tag("remove_service") %>
