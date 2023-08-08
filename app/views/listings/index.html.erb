@@ -1,1 +1,11 @@
+<%= render "user/navbar" %>
+
 <h1>Marketplace</h1>
+
+<% @listings.each do |listing| %>
+<div>
+    <%= link_to listing do %>
+        <%= listing.title %>
+    <% end %>
+</div>
+<% end %>

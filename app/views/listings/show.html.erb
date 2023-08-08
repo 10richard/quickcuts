@@ -1,1 +1,7 @@
-<h1>Show listing (client/barber)</h1>
+<h1 class="text-3xl"><%= @listing.title %></h1>
+
+<h2 class="text-xl">Services:</h2>
+<% @listing.services.each do |s| %>
+    <%= s.name %>
+    <%= s.price %>
+<% end %>
