@@ -26,4 +26,10 @@ class Listing < ApplicationRecord
             end
         end
     end
+
+    def pictures_as_thumbnails
+        pictures.map do |p|
+            p.variant(resize_to_limit: [750, 750]).processed
+        end
+    end
 end
