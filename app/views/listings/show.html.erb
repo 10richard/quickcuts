@@ -1,7 +1,11 @@
 <h1 class="text-3xl"><%= @listing.title %></h1>
 
-<h2 class="text-xl">Services:</h2>
-<% @listing.services.each do |s| %>
-    <%= s.name %>
-    <%= s.price %>
+
+<% @listing.pictures_as_thumbnails.each do |p| %>
+    <%= link_to image_tag(p), p %>
+<% end %>
+
+
+<%= form_with model: @reservation do |f| %>
+    <%= f.collection_select :service, @listing.services, :price, :name %>
 <% end %>
