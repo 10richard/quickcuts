@@ -2,12 +2,14 @@ class Listing < ApplicationRecord
 
     belongs_to :barber, class_name: 'User'
     
+    has_many_attached :pictures
+
     has_many :services, dependent: :destroy
     accepts_nested_attributes_for :services, allow_destroy: true,
     reject_if: :reject_service
 
     validate :user_is_barber?
-    validates :title, :barber_id, :services, presence: true
+    validates :title, :barber_id, :services, :pictures, presence: true
 
     def user_is_barber?
         #check if user is a barber
