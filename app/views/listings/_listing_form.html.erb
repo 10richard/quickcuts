@@ -1,5 +1,5 @@
 <%= form_with model: @listing, class: 'flex flex-col items-center' do |f| %>
-    <div class="mb-20">
+    <div class="mb-20" data-controller="image-previews">
         <%# Allow barber to add images %>
         <%= f.label :pictures, 'Upload photos' %><br />
         <%= f.file_field :pictures, multiple: true%>
