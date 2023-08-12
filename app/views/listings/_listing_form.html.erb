@@ -1,8 +1,8 @@
 <%= form_with model: @listing, class: 'flex flex-col items-center' do |f| %>
     <div class="mb-20">
         <%# Allow barber to add images %>
-        <%= f.label :photos, 'Upload photos' %><br />
-        <%= %>
+        <%= f.label :pictures, 'Upload photos' %><br />
+        <%= f.file_field :pictures, multiple: true%>
     </div>
     
     <div class="mb-20">
