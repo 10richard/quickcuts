@@ -1,8 +1,17 @@
 <%= form_with model: @listing, class: 'flex flex-col items-center' do |f| %>
-    <div class="mb-20" data-controller="image-previews">
+    <div class="mb-20" data-controller="previews">
         <%# Allow barber to add images %>
         <%= f.label :pictures, 'Upload photos' %><br />
-        <%= f.file_field :pictures, multiple: true%>
+        <%= f.file_field :pictures, multiple: true, 
+        direct_upload: true, data: { previews_target: "input", action: "change->previews#preview" } %>
+
+        <div class="image-container">
+            <% if @listing.pictures.attached? %>
+                <%= image_tag @listing.pictures, data: { previews_target: "preview" }, class: "w-36" %>
+            <% else %>
+                <%= image_tag "", data: { previews_target: "preview" }, class: "image" %>
+            <% end %>
+        </div>
     </div>
     
     <div class="mb-20">
