@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
     before_action :authenticate_user!
+    before_action :user_is_barber?, except: [:index, :show]
 
     def index
         @listings = Listing.all
@@ -47,5 +48,11 @@ class ListingsController < ApplicationController
     private
     def listing_params
         params.require(:listing).permit(:title, services_attributes: [:id, :name, :price], pictures: [])
+    end
+
+    def user_is_barber?
+        unless current_user.is_barber
+            redirect_to root_path
+        end
     end
 end
