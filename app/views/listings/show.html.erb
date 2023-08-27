@@ -4,7 +4,7 @@
 
 
 <% @listing.pictures_as_thumbnails.each do |p| %>
-    <%= link_to image_tag(p), p %>
+    <%= link_to image_tag(p), p, class: "w-36" %>
 <% end %>
 
 
