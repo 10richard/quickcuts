@@ -8,7 +8,6 @@ class Listing < ApplicationRecord
     accepts_nested_attributes_for :services, allow_destroy: true,
     reject_if: :reject_service
 
-    validate :user_is_barber?
     validates :title, :barber_id, :services, :pictures, presence: true
 
     def reject_service(attributes)
