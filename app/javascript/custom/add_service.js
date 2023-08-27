@@ -1,6 +1,6 @@
 const btn = document.getElementById('add-service');
 const servicesContainer = document.getElementById('services');
-let count = parseInt(servicesContainer.lastElementChild.id.split('_')[3]) + 1;
+let count = parseInt(servicesContainer.getElementsByTagName('input')[0].id.split('_')[3]) + 1;
 
 btn.addEventListener('click', () => {
     if (servicesContainer.querySelectorAll('div').length > 4) return;
