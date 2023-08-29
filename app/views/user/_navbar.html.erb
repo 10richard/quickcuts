@@ -1,4 +1,4 @@
-<nav class="bg-slate-900 text-white">
+<nav data-controller="navbar" class="bg-slate-900 text-white">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <%= link_to root_path, class: "group flex items-center" do %>
         <%= image_tag 'logo.svg', class: "w-12" %>
@@ -35,5 +35,3 @@
     </div>
   </div>
 </nav>
-
-<%= javascript_import_module_tag("custom/navbar") %>
