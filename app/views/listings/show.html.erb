@@ -11,3 +11,5 @@
 <%= form_with model: @reservation do |f| %>
     <%= f.collection_select :service, @listing.services, :price, :name %>
 <% end %>
+
+<%= link_to 'Delete listing', @listing, data: { turbo_method: :delete } if current_user.listing == @listing %>
