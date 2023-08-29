@@ -7,6 +7,7 @@
             <% @listing.pictures.each do |pic| %>
                 <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
                 <%= image_tag pic, class: "w-36" %>
+                <%= link_to "Remove", remove_picture_listing_path(pic), data: { turbo_method: :delete } %>
             <% end %>
         <% end %>
 
@@ -19,7 +20,7 @@
         <%= f.text_field :title, placeholder: 'ie. Cuts with Chris' %>
     </div>
 
-    <div class="mb-20">
+    <div data-controller="services" class="mb-20">
         <h2>Services:</h2>
         <div id="services">
             <%= f.fields_for :services do |services_form| %>
@@ -39,6 +40,3 @@
 
     <%= f.submit 'Create', class: 'border border-2 border-black rounded-md w-[90vw]' %>
 <% end %>
-
-<%= javascript_import_module_tag("custom/add_service") %>
-<%= javascript_import_module_tag("custom/remove_service") %>
