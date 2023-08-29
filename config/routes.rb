@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get "pages/contact"
   get "pages/about"
 
-  resources :listings
+  resources :listings do
+    member do
+      delete :remove_picture
+    end
+  end
 
   get "user/dashboard"
 
