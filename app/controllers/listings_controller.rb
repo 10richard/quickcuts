@@ -45,6 +45,12 @@ class ListingsController < ApplicationController
         redirect_to :authenticated_root
     end
 
+    def remove_picture
+        @picture = ActiveStorage::Attachment.find(params[:id])
+        @picture.purge_later
+        redirect_back(fallback_location: request.referer)
+    end
+
     private
     def listing_params
         params.require(:listing).permit(:title, services_attributes: [:id, :name, :price], pictures: [])
