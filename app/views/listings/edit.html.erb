@@ -1,4 +1,4 @@
 <h1 class="text-3xl mb-16">Edit your listing</h1>
-<%= render "listing_form"%>
+<%= render "listing_form", listing: @listing %>
 
 <%= link_to "Delete listing", @listing, data: { turbo_method: :delete } %>
