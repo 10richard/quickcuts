@@ -1,11 +1,12 @@
 <%= render "user/navbar" %>
 
-<h1>Marketplace</h1>
+<h1 class="text-5xl mb-10">Marketplace</h1>
 
 <% @listings.each do |listing| %>
-<div>
-    <%= link_to listing do %>
-        <%= listing.title %>
+<div class="grid grid-flow-col-dense">
+    <%= link_to listing, class: "flex flex-col items-center" do %>
+        <%= image_tag listing.pictures[0], class: "w-72" %>
+        <p><%= listing.title %></p>
     <% end %>
 </div>
 <% end %>
