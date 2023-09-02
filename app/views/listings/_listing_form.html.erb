@@ -1,7 +1,6 @@
 <%= form_with model: listing, class: 'flex flex-col items-center' do |f| %>
     <div class="mb-20" data-controller="previews">
         <%# Allow barber to add images %>
-        <%= f.label :pictures, 'Upload photos', class: "text-2xl" %><br />
 
         <% if @listing.pictures.attached? %>
             <% @listing.pictures.each do |pic| %>
@@ -10,10 +9,12 @@
                 <%= link_to "Remove", remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "block" %>
             <% end %>
         <% end %>
-
-        <%= f.file_field :pictures, multiple: true, 
-        direct_upload: true, data: { previews_target: "input", action: "change->previews#preview" },
-        class:  %>
+        <div class="">
+            <h1 class="text-2xl mb-5">Upload Photos</h1>
+            <%= f.label :pictures, '+', class: "text-2xl border-slate-700 border-4 p-20 block" %><br />
+            <%= f.file_field :pictures, multiple: true, 
+            direct_upload: true, class: "hidden" %>
+        </div>
     </div>
     
     <div class="mb-20">
@@ -39,5 +40,5 @@
         Add a service <span class="text-cyan-300 text-xl">+</span></button>
     </div>
 
-    <%= f.submit class: 'border border-2 border-black rounded-md w-[90vw]' %>
+    <%= f.submit class: 'border border-2 border-black rounded-md w-[90vw] mb-20' %>
 <% end %>
