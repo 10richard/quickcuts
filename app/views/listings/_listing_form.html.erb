@@ -2,6 +2,19 @@
     <div class="mb-20" data-controller="previews">
         <%# Allow barber to add images %>
 
+        <div class="">
+            <h1 class="text-2xl mb-5">Upload Photos</h1>
+            <div class="h-[250px] w-[250px] grid place-items-center 
+            border-4 border-slate-700 relative hover:bg-gray-200 
+            bg-gray-100 duration-300">
+                <%= f.label :pictures, "+",
+                class: "text-cyan-400 text-2xl hover:cursor-pointer
+                box-border w-full h-full leading-[250px] text-center" %>
+                <%= f.file_field :pictures, multiple: true, 
+                direct_upload: true, class: "hidden" %>
+            </div>
+        </div>
+
         <% if @listing.pictures.attached? %>
             <% @listing.pictures.each do |pic| %>
                 <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
@@ -9,12 +22,6 @@
                 <%= link_to "Remove", remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "block" %>
             <% end %>
         <% end %>
-        <div class="">
-            <h1 class="text-2xl mb-5">Upload Photos</h1>
-            <%= f.label :pictures, '+', class: "text-2xl border-slate-700 border-4 p-20 block" %><br />
-            <%= f.file_field :pictures, multiple: true, 
-            direct_upload: true, class: "hidden" %>
-        </div>
     </div>
     
     <div class="mb-20">
