@@ -1,26 +1,34 @@
 <%= form_with model: listing, class: 'flex flex-col items-center' do |f| %>
-    <div class="mb-20" data-controller="previews">
+    <div class="mb-20" data-controller="image-previews">
         <%# Allow barber to add images %>
+        <h1 class="text-2xl mb-5">Upload Photos</h1>
+        <div>
+            <div class="flex items-center">
+                <button type="button" id="prev-image" class="text-4xl mr-5 border-2 pr-1">
+                    <
+                </button>
 
-        <div class="">
-            <h1 class="text-2xl mb-5">Upload Photos</h1>
-            <div class="h-[250px] w-[250px] grid place-items-center 
-            border-4 border-slate-700 relative hover:bg-gray-200 
-            bg-gray-100 duration-300">
-                <%= f.label :pictures, "+",
-                class: "text-cyan-400 text-2xl hover:cursor-pointer
-                box-border w-full h-full leading-[250px] text-center" %>
-                <%= f.file_field :pictures, multiple: true, 
-                direct_upload: true, class: "hidden" %>
+                <div class="h-[450px] w-[450px] grid place-items-center 
+                border-4 border-slate-700 relative hover:bg-gray-200 
+                bg-gray-100 duration-300">
+                    <%= f.label :pictures, "+",
+                    class: "text-cyan-400 text-2xl hover:cursor-pointer
+                    box-border w-full h-full leading-[450px] text-center" %>
+                    <%= f.file_field :pictures, multiple: true, 
+                    class: "hidden", direct_upload: true,
+                    data: { image_previews_target: "input", action: "change->image-previews#preview" } %>
+                </div>
+
+                <button type="button" id="next-image" class="text-4xl ml-5 border-2 pl-1">
+                    >
+                </button>
             </div>
         </div>
 
-        <% if @listing.pictures.attached? %>
-            <% @listing.pictures.each do |pic| %>
-                <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
-                <%= image_tag pic, class: "w-36 inline" %>
-                <%= link_to "Remove", remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "block" %>
-            <% end %>
+        <% if listing.pictures.attached? %>
+            <%= image_tag pic, data: { image_previews_target: "preview" }, class: "w-36" %>
+        <% else %>
+            <%= image_tag "", data: { image_previews_target: "preview" }, class: "w-36" %>
         <% end %>
     </div>
     

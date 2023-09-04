@@ -1,8 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="previews"
+// Connects to data-controller="image-previews"
 export default class extends Controller {
   static targets = ["input", "preview"];
+  static values = { count: Number };
 
   connect() {
   }
@@ -15,12 +16,12 @@ export default class extends Controller {
 
     reader.onloadend = function () {
       preview.src = reader.result;
-    };
+    }
 
     if (file) {
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file)
     } else {
-      preview.src = "";
+      preview.src = ""
     }
   }
 }
