@@ -25,6 +25,8 @@
             </div>
         </div>
 
+        <div id="previews"></div>
+
         <% if listing.pictures.attached? %>
             <%= image_tag pic, data: { image_previews_target: "preview" }, class: "w-36" %>
         <% else %>

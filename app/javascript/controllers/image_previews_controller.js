@@ -9,17 +9,23 @@ export default class extends Controller {
   }
 
   preview() {
+    const previewsContainer = document.getElementById("previews");
+
     let input = this.inputTarget;
-    let preview = this.previewTarget;
-    let file = input.files[0];
-    let reader = new FileReader();
+    let images = Array.from(input.files);
 
-    reader.onloadend = function () {
-      preview.src = reader.result;
-    }
+    if (images) {
+      images.forEach( function(img) {
+        let reader = new FileReader();
+        reader.readAsDataURL(img);
 
-    if (file) {
-      reader.readAsDataURL(file)
+        reader.onloadend = function () {
+          let preview = document.createElement('img');
+          preview.src = reader.result;
+          preview.classList.add("w-36");
+          previewsContainer.appendChild(preview);
+        }
+      });
     } else {
       preview.src = ""
     }
