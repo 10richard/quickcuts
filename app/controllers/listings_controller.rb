@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
             flash[:success] = 'Listing successfully created'
             redirect_to @listing and return
         end
-        render :new, status: :unprocessable_entity
+        redirect_back(fallback_location: request.referer)
     end
 
     def show
