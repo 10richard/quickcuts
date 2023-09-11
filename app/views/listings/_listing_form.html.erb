@@ -1,37 +1,58 @@
 <%= form_with model: listing, class: 'flex flex-col items-center' do |f| %>
     <div class="mb-20" data-controller="image-previews">
         <%# Allow barber to add images %>
-        <h1 class="text-2xl mb-5">Upload Photos</h1>
-        <div>
-            <div class="flex items-center">
-                <button type="button" id="prev-image" class="text-4xl mr-5 border-2 pr-1">
-                    <
+        <h1 class="text-2xl mb-5">Photos</h1>
+        <div class="flex flex-col items-center">
+            <div class="flex items-center mb-10 relative"
+            data-controller="carousel">
+                <button type="button" id="prev-image" 
+                class="mr-5 w-16 hover:opacity-70" data-action="click->carousel#previous">
+                    <%= image_tag "arrow-left-icon.svg" %>
                 </button>
 
-                <div class="h-[450px] w-[450px] grid place-items-center 
-                border-4 border-slate-700 relative hover:bg-gray-200 
-                bg-gray-100 duration-300">
-                    <%= f.label :pictures, "+",
-                    class: "text-cyan-400 text-2xl hover:cursor-pointer
-                    box-border w-full h-full leading-[450px] text-center" %>
-                    <%= f.file_field :pictures, multiple: true, 
-                    class: "hidden", direct_upload: true,
-                    data: { image_previews_target: "input", action: "change->image-previews#preview" } %>
+                <div id="previews" class="h-[450px] w-[450px] grid place-items-center 
+                border-4 border-slate-700 relative">
+                    <% if listing.pictures.attached? %>
+                        <% listing.pictures.each_with_index do |pic, i| %>
+                            <div data-carousel-target="image" class="absolute <%= i > 0 ? "hidden" : nil %>">
+                                <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
+                                <%= image_tag pic.representation(resize_to_limit: [450, 450]) %>
+                                <%= link_to remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "absolute text-cyan-300 top-3 right-3" do %>
+                                    <%= image_tag "trash-icon.svg", class: "w-10 opacity-50 hover:opacity-100" %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    <% end %>
                 </div>
 
-                <button type="button" id="next-image" class="text-4xl ml-5 border-2 pl-1">
-                    >
+                <button type="button" id="next-image" 
+                class="ml-5 w-16 hover:opacity-70" data-action="click->carousel#next">
+                    <%= image_tag "arrow-right-icon.svg" %>
                 </button>
             </div>
+
+            <h1 class="text-2xl">Preview</h1>
+            <div id="previews-before-upload" class="mb-10 flex w-full h-[250px] border border-dashed border-separate border-black items-center justify-center">
+            </div>
+
+            <!--<label for="listing_pictures" class="text-cyan-400 hover:cursor-pointer w-36
+            text-center hover:bg-gray-200 bg-gray-100 flex justify-center
+            border-black border-2 rounded-md">
+                <div class="flex items-center">
+                    <%= image_tag 'upload-icon.svg', class: "w-10" %> 
+                    <p class="text-2xl">Upload</p>
+                </div>
+            </label> --->
+
+            <%= f.file_field :pictures, multiple: true, direct_upload: true,
+            data: { image_previews_target: "input", action: "change->image-previews#previews" } %>
         </div>
 
-        <div id="previews"></div>
-
-        <% if listing.pictures.attached? %>
-            <%= image_tag pic, data: { image_previews_target: "preview" }, class: "w-36" %>
-        <% else %>
-            <%= image_tag "", data: { image_previews_target: "preview" }, class: "w-36" %>
-        <% end %>
+        <%# if listing.pictures.attached? %>
+            <%#= image_tag pic, data: { image_previews_target: "preview" }, class: "w-36" %>
+        <%# else %>
+            <%#= image_tag "", data: { image_previews_target: "preview" }, class: "w-36" %>
+        <%# end %>
     </div>
     
     <div class="mb-20">
