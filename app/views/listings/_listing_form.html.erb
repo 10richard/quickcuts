@@ -36,17 +36,14 @@
             <div id="previews-before-upload" class="mb-10 flex w-full h-[250px] border border-dashed border-separate border-black items-center justify-center">
             </div>
 
-            <!--<label for="listing_pictures" class="text-cyan-400 hover:cursor-pointer w-36
+            <label class="text-cyan-400 hover:cursor-pointer w-36
             text-center hover:bg-gray-200 bg-gray-100 flex justify-center
-            border-black border-2 rounded-md">
-                <div class="flex items-center">
-                    <%= image_tag 'upload-icon.svg', class: "w-10" %> 
-                    <p class="text-2xl">Upload</p>
-                </div>
-            </label> --->
-
-            <%= f.file_field :pictures, multiple: true, direct_upload: true,
-            data: { image_previews_target: "input", action: "change->image-previews#previews" } %>
+            items-center border-black border-2 rounded-md">
+                <%= image_tag 'upload-icon.svg', class: "w-10" %> 
+                <p class="text-2xl">Upload</p>
+                <%= f.file_field :pictures, multiple: true, direct_upload: true, class: "hidden",
+                data: { image_previews_target: "input", action: "change->image-previews#previews" } %>
+            </label>
         </div>
 
         <%# if listing.pictures.attached? %>
