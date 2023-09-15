@@ -6,6 +6,23 @@ export default class extends Controller {
 
   connect() {
     this.index = 0;
+    const numberOfPics = document.getElementById("previews").children.length;
+    const leftArrow = document.getElementById("prev-image");
+    const rightArrow =  document.getElementById("next-image");
+    
+    function checkIndex(arrow) {
+      if (this.index == 0) {
+        leftArrow.classList.add("opacity-60");
+      } else {
+        leftArrow.classList.remove("opacity-60");
+      }
+
+      if (this.index == numberOfPics) {
+        rightArrow.classList.add("opacity-60");
+      } else {
+        rightArrow.classList.remove("opacity-60");
+      }
+    }
   }
 
   previous() {
