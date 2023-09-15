@@ -8,3 +8,8 @@ Ruby on Rails, TailwindCSS and Postgres
 
 
 Registration + Sessions were created with the devise gem
+
+Active storage was used to handle image uploads for
+creating listings
+
+Most difficult part of this project was definitely the image handling - displaying, resizing, validating, etc.
