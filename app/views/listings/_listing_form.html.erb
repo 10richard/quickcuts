@@ -6,17 +6,18 @@
             <div class="flex items-center mb-10 relative"
             data-controller="carousel">
                 <button type="button" id="prev-image" 
-                class="mr-5 w-16 hover:opacity-70" data-action="click->carousel#previous">
+                class="mr-5 w-16 hover:opacity-60" data-action="click->carousel#previous">
                     <%= image_tag "arrow-left-icon.svg" %>
                 </button>
 
-                <div id="previews" class="h-[450px] w-[450px] grid place-items-center 
-                border-4 border-slate-700 relative">
+                <div id="previews" class="h-[450px] w-[450px] border-4 border-slate-700 relative">
                     <% if listing.pictures.attached? %>
                         <% listing.pictures.each_with_index do |pic, i| %>
-                            <div data-carousel-target="image" class="absolute <%= i > 0 ? "hidden" : nil %>">
-                                <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
-                                <%= image_tag pic.representation(resize_to_limit: [450, 450]) %>
+                            <div data-carousel-target="image" class="absolute h-full w-full flex items-center justify-center <%= i > 0 ? "hidden" : nil %>">
+                                <div>
+                                    <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
+                                    <%= image_tag pic.representation(resize_to_limit: [450, 450]) %>
+                                </div>
                                 <%= link_to remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "absolute text-cyan-300 top-3 right-3" do %>
                                     <%= image_tag "trash-icon.svg", class: "w-10 opacity-50 hover:opacity-100" %>
                                 <% end %>
@@ -26,7 +27,7 @@
                 </div>
 
                 <button type="button" id="next-image" 
-                class="ml-5 w-16 hover:opacity-70" data-action="click->carousel#next">
+                class="ml-5 w-16 hover:opacity-60" data-action="click->carousel#next">
                     <%= image_tag "arrow-right-icon.svg" %>
                 </button>
             </div>
