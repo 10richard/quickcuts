@@ -23,6 +23,7 @@ class ListingsController < ApplicationController
 
     def show
         @listing = Listing.find(params[:id])
+        @service_opts = @listing.services.collect{|service| ["#{service.name} $#{service.price}", service.id] }
     end
 
     def edit
