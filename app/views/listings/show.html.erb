@@ -2,14 +2,34 @@
 
 <h1 class="text-3xl"><%= @listing.title %></h1>
 
+<div class="flex items-center mb-10 relative" data-controller="carousel">
+    <button type="button" id="prev-image" 
+    class="mr-5 w-16 hover:opacity-60" 
+    data-action="click->carousel#previous">
+        <%= image_tag "arrow-left-icon.svg" %>
+    </button>
 
-<% @listing.pictures_as_thumbnails.each do |p| %>
-    <%= link_to image_tag(p), p, class: "w-36" %>
-<% end %>
+    <div id="previews" class="h-[450px] w-[450px] border-2 border-slate-700 bg-zinc-200 relative rounded-xl">
+            <% @listing.pictures.each_with_index do |pic, idx| %>
+                <div data-carousel-target="slide" class="absolute flex items-center justify-center h-full w-full <%= idx > 0 ? "hidden" : nil %>">
+                    <%= image_tag pic, class: "w-[100%] h-[100%] object-contain" %>                                
+                </div>
+            <% end %>
+    </div>
+
+    <button type="button" id="next-image" 
+    class="ml-5 w-16 hover:opacity-60" 
+    data-action="click->carousel#next">
+        <%= image_tag "arrow-right-icon.svg" %>
+    </button>
+</div>
 
 
 <%= form_with model: @reservation do |f| %>
-    <%= f.collection_select :service, @listing.services, :price, :name %>
+    <%= f.select :service, @service_opts %>
+    <%= f.submit "Book barber" %>
 <% end %>
 
-<%= link_to 'Delete listing', @listing, data: { turbo_method: :delete } if current_user.listing == @listing %>
+<% if current_user.listing == @listing  %>
+    <%= link_to 'Edit listing', edit_listing_path(@listing) %>
+<% end %>

@@ -1,25 +1,30 @@
 <%= form_with model: listing, class: 'flex flex-col items-center' do |f| %>
     <div class="mb-20" data-controller="image-previews">
         <%# Allow barber to add images %>
-        <h1 class="text-2xl mb-5">Photos</h1>
         <div class="flex flex-col items-center">
-            <div class="flex items-center mb-10 relative"
-            data-controller="carousel">
+            <h1 class="text-2xl mb-5">Photos</h1>
+            <div class="flex items-center mb-10 relative" data-controller="carousel">
                 <button type="button" id="prev-image" 
-                class="mr-5 w-16 hover:opacity-60" data-action="click->carousel#previous">
+                class="mr-5 w-16 hover:opacity-60" 
+                data-action="click->carousel#previous">
                     <%= image_tag "arrow-left-icon.svg" %>
                 </button>
 
-                <div id="previews" class="h-[450px] w-[450px] border-4 border-slate-700 relative">
+                <div id="previews" class="h-[450px] w-[450px] border-2 border-slate-700 bg-zinc-200 relative rounded-xl">
                     <% if listing.pictures.attached? %>
-                        <% listing.pictures.each_with_index do |pic, i| %>
-                            <div data-carousel-target="image" class="absolute h-full w-full flex items-center justify-center <%= i > 0 ? "hidden" : nil %>">
-                                <div>
-                                    <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
-                                    <%= image_tag pic.representation(resize_to_limit: [450, 450]) %>
-                                </div>
-                                <%= link_to remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "absolute text-cyan-300 top-3 right-3" do %>
-                                    <%= image_tag "trash-icon.svg", class: "w-10 opacity-50 hover:opacity-100" %>
+                        <% listing.pictures.each_with_index do |pic, idx| %>
+                            <div data-carousel-target="slide" class="absolute flex items-center justify-center h-full w-full <%= idx > 0 ? "hidden" : nil %>">
+
+                                <%= f.hidden_field :pictures, multiple: true, value: pic.signed_id %>
+                                <%= image_tag pic, class: "w-[100%] h-[100%] object-contain" %>                                
+
+                                <h1 class="absolute bottom-11 right-2/3 bg-white bg-opacity-80 
+                                rounded-xl py-1.5 px-2 font-medium <%= idx > 0 ? "hidden" : nil %>">
+                                Cover photo
+                                </h1>
+
+                                <%= link_to remove_picture_listing_path(pic), data: { turbo_method: :delete }, class: "absolute text-cyan-300 top-5 right-5" do %>
+                                    <%= image_tag "trash-icon.svg", class: "w-12 p-2 opacity-60 hover:opacity-100 hover:bg-white hover:bg-opacity-80 rounded-full duration-100" %>
                                 <% end %>
                             </div>
                         <% end %>
@@ -27,7 +32,8 @@
                 </div>
 
                 <button type="button" id="next-image" 
-                class="ml-5 w-16 hover:opacity-60" data-action="click->carousel#next">
+                class="ml-5 w-16 hover:opacity-60" 
+                data-action="click->carousel#next">
                     <%= image_tag "arrow-right-icon.svg" %>
                 </button>
             </div>
